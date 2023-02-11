@@ -1,3 +1,6 @@
+# This searches through the list using enumerate
+# enumerate returns a tuple of the index, value of the list.
+
 def linear_search(data: list[int], target: int) -> int:
     for indx, val in enumerate(data):
         if val == target:
