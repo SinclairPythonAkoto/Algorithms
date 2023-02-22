@@ -50,3 +50,8 @@ product3: Book = factory.create_product('book', 'Python for Data Science Handbok
 print(f'Product 1: {product1.name}, {product1.price}, {product1.size}')
 print(f'Product 2: {product2.name}, {product2.price}, {product2.warranty}')
 print(f'Product 3: {product3.name}, {product3.price}, {product3.author}')
+
+# Output
+# Product 1: T-Shirt, 19.99, L
+# Product 2: Smartphone, 799.99, 2 years
+# Product 3: Python for Data Science Handbok, 49.99, Jake VanderPlas
