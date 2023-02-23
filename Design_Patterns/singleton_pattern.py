@@ -29,3 +29,10 @@ logger1.log("Log message 1")
 logger2.log("Log message 2")
 logger1.print_log()
 logger2.print_log()
+
+# Output
+# True
+# Log message 1
+# Log message 2
+# Log message 1
+# Log message 2
