@@ -13,6 +13,8 @@ REMEMBER!!
   because the rest of the elements need to rearranged to it's new index.
 - You can build a heap directly from the array using heapify. This is
   much more efficient and makes it an O(n) operation.
+- O(n) ranks 3rd as the most efficient algorithim running time, 
+  behind O(longN) and O(1) - which is the most efficient.
 """
 def print_all_elements(lst: list):
     for element in lst:
