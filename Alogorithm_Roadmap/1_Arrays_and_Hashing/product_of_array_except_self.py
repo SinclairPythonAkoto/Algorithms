@@ -70,3 +70,38 @@ prefix_count * list_index = prefix_count
 Time: O(n)
 Space: O(1)
 """
+from typing import List
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # create list same size as nums list
+        res = [1] * (len(nums))
+
+        
+        prefix = 1
+        # for each position in array
+        for i in range(len(nums)):
+            # set iterator to prefix
+            res[i] = prefix
+            # multiply then add every num to prefix
+            prefix *= nums[i]
+        postfix = 1
+        # set range end to beginnning
+        for i in range(len(nums) - 1, -1, -1):
+            # multiply & add prefix by current postfix to update answer
+            res[i] *= postfix
+            # multipy & add every num to postfix
+            postfix *= nums[i]
+        return res
+
+
+answer: Solution = Solution()
+
+example1: List[int] = [1,2,3,4]
+example2: List[int] = [-1,1,0,-3,3]
+
+result = answer.productExceptSelf(example1)
+print(result)
+
+result = answer.productExceptSelf(example2)
+print(result)
