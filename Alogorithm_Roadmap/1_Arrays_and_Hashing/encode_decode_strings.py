@@ -75,3 +75,6 @@ decode: List[str] = answer.decode(encode)
 
 print(encode)    # 4#lint4#code4#love3#you
 print(decode)    # ['lint', 'code', 'love', 'you']
+
+# Time: O(n)
+# Space: O(n)
