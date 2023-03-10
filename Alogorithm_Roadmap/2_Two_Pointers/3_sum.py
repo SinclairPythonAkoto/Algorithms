@@ -76,10 +76,10 @@ class Solution:
 answer: Solution = Solution()
 
 example1: List[int] = [-1,0,1,2,-1,-4]
-print(answer.threeSum(example1))
+print(answer.threeSum(example1))    # [[-1, -1, 2], [-1, 0, 1]]
 
 example2: List[int] = [0,1,1]
-print(answer.threeSum(example2))
+print(answer.threeSum(example2))    # []
 
 example3: List[int] = [0,0,0]
-print(answer.threeSum(example3))
+print(answer.threeSum(example3))    # [[0, 0, 0]]
