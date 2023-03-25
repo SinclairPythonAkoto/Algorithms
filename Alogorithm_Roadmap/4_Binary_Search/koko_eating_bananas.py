@@ -32,7 +32,49 @@ Solution
 - We find the maximum value from the piles list and then use
   that value to create a range. The left pointer will start from
   1, and the right pointer will be the maximum value.
-- 
+- We use the range to caluclate the value k by iterating through the
+  range and dividing each index by the piles index, 
+  then sum the values to see if its greater or lower 
+  than the number of hours.
+- We use the L & R pointers to iterate from the start and end of the range.
+  We add the L + R pointer togther then divide by 2 to get the middle value.
+  If the sum is lower then we move the R pointer to the middle position, if
+  the sum is higher then we move the L pointer intead.
+
+  piles = [3, 6, 7, 11]
+  H = 8
+
+  # create L & R pointers
+  L = 1
+  R = max(piles)
+
+  # now use pointers to binary search
+  k = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+       L              k               R
+
+       (L + R) // 2 = k  =>  (1 + 11) // 2 = 6 
+
+       piles[n] / k = result (to nearest number)
+       (3/6 = 1) + (6/6 = 1) + (7/6 = 2) + (11/6 = 2) = 6
+
+  k = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+       L     k     R
+
+       (L + R) // 2 = k  =>  (1 + 5) // 2 = 3
+       
+       piles[n] / k = result (to nearest number)
+       (3/3 = 1) + (6/3 = 2) + (7/3 = 3) + (11/3 = 4) = 10
+
+  k = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                L  R
+                k
+
+       (L + R) // 2 = k  =>  (4 + 5) // 2 = 4
+
+       piles[n] / k = result (to nearest number)
+       (3/4 = 1) + (6/4 = 2) + (7/4 = 2) + (11/4 = 3) = 8
+
+  k = 4
 """
 import math
 from typing import List
@@ -52,8 +94,10 @@ class Solution:
                 totalTime += math.ceil(p / k)
             if totalTime <= h:
                 res = min(res, k)
+                # check previous number from R pointer
                 right_pointer = k - 1
             else:
+                # check next L pointer if res over hours
                 left_pointer = k + 1
         return res
 
