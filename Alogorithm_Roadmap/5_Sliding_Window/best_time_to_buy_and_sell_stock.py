@@ -38,10 +38,10 @@ Solution
   two days.
 
   prices = [ 7, 1, 5, 3, 6, 4]
-             L  R                 7 >= 1 = buy 1
+             L  R                 7 > 1 = buy 1
 
   prices = [ 7, 1, 5, 3, 6, 4]
-                L  R              1 <= 5 = 5 - 1 = 4 = current_profit
+                L  R              1 < 5 = 5 - 1 = 4 = current_profit
 
 - We create an object to store the current profit. After we 
   have stored our current profit, now when we checking the 
@@ -52,35 +52,39 @@ Solution
 - The logic continues until the list is empty and returns our maximum profit.
   
   prices = [ 7, 1, 5, 3, 6, 4]
-                L     R           1 <= 3 = 3 - 1 = 2 
+                L     R           1 < 3 = 3 - 1 = 2 
 
   prices = [ 7, 1, 5, 3, 6, 4]
-                L        R        1 <= 6 = 6 - 1 = 6 max_profit
+                L        R        1 < 6 = 6 - 1 = 6 max_profit
 
   prices = [ 7, 1, 5, 3, 6, 4]
-                L           R     1 <= 4 = 4 - 1 = 3
-
--  
+                L           R     1 < 4 = 4 - 1 = 3
 """
 from typing import List
 
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # initialise result
-        result = 0
+        # initialise pointers & result
+        left_pointer = 0
+        right_pointer = 1
+        max_profit = 0
 
-        # get the 1st val for the first day
-        lowest = prices[0]
-
-        for price in prices:
-            if price < lowest:
-                # update to lowest price
-                lowest = price
-            # subract lowest from every price & compare to max result
-            # use max() to compare subtraction to result in 1 line
-            result = max(result, price - lowest)
-        return result
+        while right_pointer < len(prices):
+            if prices[left_pointer] < prices[right_pointer]:
+                # calculate profit 
+                profit = prices[right_pointer] - prices[left_pointer]
+                # update max profit
+                max_profit = max(max_profit, profit)
+            else:
+                # if L > R
+                # move L pointer to position of R
+                left_pointer = right_pointer
+            # move R by 1
+            right_pointer += 1
+        
+        return max_profit
+    
 
 
 
