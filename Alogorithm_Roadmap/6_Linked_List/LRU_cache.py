@@ -22,12 +22,19 @@ Output
 
 
 Solution
-- double linked list and hashmap in order to solve the code effieciently O(1)
-- dummy nodes for lru and mru pointers 
-- A hashmap is good beacuse we can keep track of the values by settign each  key to the node
-- from the hashmap it is easy to set the get function to get the key from the hashmap
-- we can then clculate which is the LRU and MRU most recent used, and add that to our 2nd linked list (this is why we we 2)
-- With the double linked list in play, we can also manage the capaciy of the data structure withh the hep of the hashmap.
+- To solve this challenge the most efficient way O(1), we need to use a
+  hashmap and a double linked list as our data structure.
+- The hashmap is used to keep tack of the nodes, so each key will point to 
+  a node for its value. We can use the keys as our pointers!
+- When we want to select a value, we can keep track of the most recent used (MRU)
+  and LRU and then update them accordingly.
+- To do this we create dummy nodes for LRU & MRU which we use to keep track when 
+  a value is used, stored in a linked list.  In order to switch to the most current 
+  LRU we have to use a separate linked list and have our pointers that connects the two
+  linked lists together.
+- To remove a node from the list, we use our pointers and force the other nodes to
+  move positions - skipping over the unwanted node. This action removes it from the linked 
+  list becuase the node is no longer linked to any other nodes.
 """
 class Node:
     def __init__(self, key, val):
