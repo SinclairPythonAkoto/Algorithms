@@ -29,7 +29,15 @@ Solution
        In the code, we return the max values of the left and right nodes, and +1 for the root node.
        This wiill then return the max depth of the tree.
 
-- Iterative DFS: We can use an iterative approach to solve this challenge.
+- BFS (Breath-First Search)): 
+                 This a level order traversal of the tree. This means we loop through the tree
+                 level by level until there are no nodes left.  With this, we can calulate the
+                 max depth of the tree by counting the number of levels.
+                 We use a stack to keep track of the nodes by appending the nodes of each level.
+                 We then pop the nodes off the stack and check if the node is not null.  We keep
+                 track of every iteration by incrementing the depth by 1 - this will give us the
+                 max depth of the tree.
+                 This still uses recursion because we are applying the same logic to each level.
 """
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -67,19 +75,24 @@ class Solution:
 # BFS
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
+        from collections import deque
         q = deque()
         if root:
             q.append(root)
 
+        # keep track of the level
         level = 0
 
         while q:
 
             for i in range(len(q)):
+                # pop the node off the stack
                 node = q.popleft()
+                # add to the stack if the node is not null
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
+            # move to the next level
             level += 1
         return level
