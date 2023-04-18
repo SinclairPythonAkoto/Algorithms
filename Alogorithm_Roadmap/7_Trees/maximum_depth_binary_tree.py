@@ -19,6 +19,17 @@ Output: 2
 Solution
 - We can use Depth-First Search (DFS) & Breadth-First Search (BFS)
   algorithms to solve this challenge.
+
+- Recursive DFS: We can use a recursive approach to solve this challenge.
+       We fist find the root of the tree, then check the left and right nodes
+       of of the root.  We are checking if the left and right nodes are not null.
+       We check the left node first, then the right node.  We keep doing this untill 
+       there are no nodes left.  For each node we check, we count the depth of the node 
+       (meaning we count how many child nodes it has).  
+       In the code, we return the max values of the left and right nodes, and +1 for the root node.
+       This wiill then return the max depth of the tree.
+
+- Iterative DFS: We can use an iterative approach to solve this challenge.
 """
 # Definition for a binary tree node.
 class TreeNode(object):
