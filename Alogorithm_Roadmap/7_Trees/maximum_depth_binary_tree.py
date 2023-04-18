@@ -38,6 +38,14 @@ Solution
                  track of every iteration by incrementing the depth by 1 - this will give us the
                  max depth of the tree.
                  This still uses recursion because we are applying the same logic to each level.
+
+- Iterative DFS: We can also use an iterative approach to solve this challenge.
+                Start at root and add to stack.
+                Then take children and add to stack.  Then loop through children and add to stack.
+                Each time we add a node to the stack, we increment the depth by 1 and also add it to the stack.
+                We keep doing this until there are no nodes left.  We then return the max depth of the tree.
+            
+                 
 """
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -59,14 +67,19 @@ class Solution:
 # ITERATIVE DFS
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        stack = [[root, 1]]
+        stack = [[root, 1]]    # rooti, depth
+        # keep track of the max depth
         res = 0
 
+        # loop through the stack
         while stack:
+            # pop the node off the stack
             node, depth = stack.pop()
 
             if node:
+                # update the max depth
                 res = max(res, depth)
+                # add to the stack if the node is not null
                 stack.append([node.left, depth + 1])
                 stack.append([node.right, depth + 1])
         return res
